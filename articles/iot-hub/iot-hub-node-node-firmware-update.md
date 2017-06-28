@@ -69,15 +69,13 @@ In this section, you create a Node.js console app that initiates a remote firmwa
     ```
 5. Add the following variable declarations and replace the placeholder values:
    
-    ```
     var connectionString = '{device_connectionstring}';
     var registry = Registry.fromConnectionString(connectionString);
     var client = Client.fromConnectionString(connectionString);
     var deviceToUpdate = 'myDeviceId';
-    ```
+
 6. Add the following function to find and display the value of the firmwareUpdate reported property.
-   
-    ```
+
     var queryTwinFWUpdateReported = function() {
         registry.getTwin(deviceToUpdate, function(err, twin){
             if (err) {
@@ -87,10 +85,9 @@ In this section, you create a Node.js console app that initiates a remote firmwa
             }
         });
     };
-    ```
+
 7. Add the following function to invoke the firmwareUpdate method to reboot the target device:
    
-    ```
     var startFirmwareUpdateDevice = function() {
       var params = {
           fwPackageUri: 'https://secureurl'
@@ -111,13 +108,13 @@ In this section, you create a Node.js console app that initiates a remote firmwa
         } 
       });
     };
-    ```
+
 8. Finally, Add the following function to code to start the firmware update sequence and start periodically showing the reported properties:
    
-    ```
+
     startFirmwareUpdateDevice();
     setInterval(queryTwinFWUpdateReported, 500);
-    ```
+
 9. Save and close the **dmpatterns_fwupdate_service.js** file.
 
 [!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
